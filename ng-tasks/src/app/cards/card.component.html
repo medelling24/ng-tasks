@@ -1,0 +1,12 @@
+<div class="card">
+  <div class="card-block" style="padding: 5px">
+    <h4 class="card-title">{{task.name}}</h4>
+    <h6 class="card-subtitle mb-2 text-muted">{{task.description}}</h6>
+    <p class="card-text">{{task.estimate}}</p>
+    <div class="card-link" [ngClass]="{'planned': task.state==0, 'inprogress': task.state==1, 'completed': task.state==2}" >
+      <div *ngIf="task.state==0">Planned</div>
+      <div *ngIf="task.state==1">In Progress</div>
+      <div *ngIf="task.state==2">Completed</div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+.container{
+  background: url("https://trello-backgrounds.s3.amazonaws.com/5191197f9433cf5507006338/1000x562/64634c38bf2c7529c2eab487bf973533/GrowthHackingGradient.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  width: 100%;
+
+}
+.padding-20{
+  padding: 20px;
+}
+
+.margin-40{
+  margin: 40px;
+}
+
+.header{
+  text-align: center;
+  border-bottom: 1px solid #fff;
+  color: #000
+}
+
+.group-task{
+  border: 1px solid #ddd;
+  background-color: #c9c9c9;
+}
+
+.estimated{
+  margin-bottom: 10px;
+  color: darkblue;
+}
+

@@ -1,0 +1,21 @@
+
+.card{
+  border: 1px solid #999;
+  margin-bottom: 5px;
+}
+
+.card-title{
+  border-bottom: 1px solid #3d369d;
+}
+
+.planned{
+  color: orangered;
+}
+
+.inprogress{
+  color: darkblue;
+}
+
+.completed{
+  color: green;
+}

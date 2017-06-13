@@ -1,0 +1,29 @@
+<div class="container">
+
+  <div class='row padding-20'>
+    <div class='col padding-20 group-task margin-40'  [dragula]='"bag"'>
+      <h4 class="header" id="0">Planned</h4>
+      <div class="estimated"> Estimated: {{task_planned_time}} hours</div>
+      <div *ngFor="let task of tasks_planned">
+        <card [task]="task" id="{{task.id}}"></card>
+      </div>
+    </div>
+    <div class=' col padding-20 group-task margin-40'  [dragula]='"bag"'>
+      <h4 class="header" id="1">In Progress</h4>
+      <div class="estimated"> Estimated: {{task_progress_time}} hours</div>
+
+      <div *ngFor="let task of tasks_progress">
+        <card [task]="task" id="{{task.id}}"></card>
+      </div>
+    </div>
+    <div class=' col padding-20 group-task margin-40' [dragula]='"bag"'>
+      <h4 class="header" id="2">Completed</h4>
+      <div class="estimated"> Estimated: {{task_completed_time}} hours</div>
+
+      <div *ngFor="let task of tasks_completed">
+        <card [task]="task" id="{{task.id}}"></card>
+      </div>
+    </div>
+  </div>
+
+</div>
