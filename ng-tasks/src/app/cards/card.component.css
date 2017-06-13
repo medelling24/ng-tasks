@@ -19,3 +19,9 @@
 .completed{
   color: green;
 }
+
+.btn-delete{
+  position: absolute;
+  right: 0;
+  top: 0;
+}

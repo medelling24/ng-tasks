@@ -11,4 +11,13 @@ router.put('/:id', function(req, res, next) {
     ctrl.put(req, res, next);
 });
 
+router.post('/', function(req, res, next) {
+    ctrl.post(req, res, next);
+});
+
+router.delete('/:id', function(req, res, next) {
+    ctrl.delete(req, res, next);
+});
+
+
 module.exports = router;

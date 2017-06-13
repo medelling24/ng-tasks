@@ -4,4 +4,13 @@ export class Task {
   description: string;
   estimate: number;
   state: number;
+
+  constructor() {
+    this.id= 0;
+    this.name= "";
+    this.description= "";
+    this.estimate= 0;
+    this.state = 0;
+  }
+
 }

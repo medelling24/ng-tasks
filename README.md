@@ -10,6 +10,7 @@ $ npm install
 $ npm start
 ```
 
+Open http://localhost:4200
 
 Back-end
 ```sh
@@ -17,5 +18,12 @@ $ cd node-tasks
 $ npm install
 $ nodejs bin/www
 ```
+
+Back-end is on the port 3000
+
+
+
+
+You will see 4 tasks for each column, you can add and remove tasks.
 
 

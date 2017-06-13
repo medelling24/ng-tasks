@@ -54,3 +54,44 @@ exports.put = function (req, res, next) {
         exports.get(req, res, next);
     });
 };
+
+exports.post = function (req, res, next) {
+
+    var id = +new Date;
+    var title = req.body.title;
+    var time = req.body.time;
+    var state = req.body.state;
+    var description = req.body.description;
+
+    var data = jsonfile.readFileSync(file);
+
+    var obj = {
+        id: id,
+        name: title,
+        estimate: time,
+        state: state,
+        description: description
+    }
+
+    data.push(obj)
+
+    jsonfile.writeFile(file, data, function (err) {
+        exports.get(req, res, next);
+    });
+};
+
+exports.delete = function (req, res, next) {
+
+    var id = req.params.id;
+
+    var data = jsonfile.readFileSync(file);
+
+    var obj = data.filter(function (t) { return t.id == id })[0];
+    var index = data.indexOf(obj);
+
+    data.splice(index,1);
+
+    jsonfile.writeFile(file, data, function (err) {
+        exports.get(req, res, next);
+    });
+};

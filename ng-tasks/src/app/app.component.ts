@@ -14,11 +14,13 @@ export class AppComponent implements OnInit{
   task_planned_time= 20;
   task_progress_time= 20;
   task_completed_time= 20;
+  new_task: Task;
   tasks_planned: {};
   tasks_progress: {};
   tasks_completed: {};
 
   constructor(private dragulaService: DragulaService, private taskService: TaskService) {
+    this.new_task = new Task();
     dragulaService.drop.subscribe((value) => {
       this.onDrop(value.slice(1));
     });
@@ -45,6 +47,13 @@ export class AppComponent implements OnInit{
       });
   }
 
+  refresh(){
+    this.taskService.getTasks()
+      .then(tasks => {
+        this.update_data(tasks);
+      });
+  }
+
   private update_data(tasks){
     this.tasks_planned= tasks.tasks_planned;
     this.task_planned_time= tasks.time_planned;
@@ -52,6 +61,15 @@ export class AppComponent implements OnInit{
     this.task_completed_time= tasks.time_completed;
     this.tasks_progress= tasks.tasks_progress;
     this.task_progress_time= tasks.time_progress;
+  }
+
+  save(): void{
+    console.log(this.new_task)
+    this.taskService.create(this.new_task)
+      .then(tasks => {
+        this.new_task = new Task();
+        this.update_data(tasks)
+      });
   }
 
 

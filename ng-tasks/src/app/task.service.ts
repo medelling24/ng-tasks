@@ -30,11 +30,20 @@ export class TaskService {
       .catch(this.handleError);
   }
 
-  create(name: string): Promise<Task> {
+  create(task: Task): Promise<any> {
     return this.http
-      .post(this.url, JSON.stringify({name: name}), {headers: this.headers})
+      .post(this.url, JSON.stringify({title: task.name, time: task.estimate, description: task.description, state: task.state}), {headers: this.headers})
       .toPromise()
-      .then(res => res.json().data as Task)
+      .then(res => res.json().data)
+      .catch(this.handleError);
+  }
+
+  delete(id: number): Promise<any> {
+    const url = `${this.url}${id}`;
+    return this.http
+      .put(url, JSON.stringify({}), {headers: this.headers})
+      .toPromise()
+      .then( res => res.json().data )
       .catch(this.handleError);
   }
 

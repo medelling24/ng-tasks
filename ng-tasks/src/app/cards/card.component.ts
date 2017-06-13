@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 //import { ActivatedRoute, Params }   from '@angular/router';
 import { Location }                 from '@angular/common';
 import { TaskService } from '../task.service';
@@ -13,33 +13,21 @@ import 'rxjs/add/operator/switchMap';
   templateUrl: './card.component.html',
   styleUrls: [ './card.component.css' ],
 })
-export class CardComponent implements OnInit{
+export class CardComponent{
+  @Output()
+  uploaded:EventEmitter<string> = new EventEmitter();
+
   constructor(
-    private taskService: TaskService,
-//    private route: ActivatedRoute,
-    private location: Location
+    private taskService: TaskService
   ) {}
 
   @Input() task: Task;
 
-
-  goBack(): void {
-    this.location.back();
-  }
-
-  /*save(): void {
-    this.heroService.update(this.task)
-      .then(() => this.goBack());
-  }*/
-
-
-
-
-  ngOnInit(): void {
-    /*this.route.params
-      .switchMap((params: Params) => this.heroService.getHero(+params['id']))
-      .subscribe(hero => this.task = hero);*/
-   //this.task = {id: 1, name: "Title", description: "desc", estimate: 10, state: 0 };
+  delete(id: number): void{
+    this.taskService.delete(id)
+      .then(tasks => {
+        this.uploaded.emit('complete');
+      });
   }
 
 }
